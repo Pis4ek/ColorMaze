@@ -38,7 +38,8 @@ public class GlobalInstaller : MonoInstaller
         }
         catch
         {
-            Container.Bind<GameSettings>().FromInstance(new()).AsSingle().NonLazy();
+            _gameSettings = new();
+            Container.Bind<GameSettings>().FromInstance(_gameSettings).AsSingle().NonLazy();
         }
 
         var obj = Instantiate(_audioServicePrefab);
